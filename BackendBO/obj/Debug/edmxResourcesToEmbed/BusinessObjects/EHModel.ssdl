@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EH_Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonName" Type="nvarchar" MaxLength="200" />
+    <Property Name="PersonMailID" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="Deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="EH_PersonRoleMapping">
+    <Key>
+      <PropertyRef Name="PersonRoleMappingId" />
+    </Key>
+    <Property Name="PersonRoleMappingId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonId" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="RoleId" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="Deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="EH_Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="Deleted" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="EHModelStoreContainer">
+    <EntitySet Name="EH_Person" EntityType="Self.EH_Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EH_PersonRoleMapping" EntityType="Self.EH_PersonRoleMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EH_Role" EntityType="Self.EH_Role" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

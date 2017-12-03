@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EH_Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PersonMailID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="EH_PersonRoleMapping">
+    <Key>
+      <PropertyRef Name="PersonRoleMappingId" />
+    </Key>
+    <Property Name="PersonRoleMappingId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RoleId" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="EH_Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="EHContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EH_Person" EntityType="Self.EH_Person" />
+    <EntitySet Name="EH_PersonRoleMapping" EntityType="Self.EH_PersonRoleMapping" />
+    <EntitySet Name="EH_Role" EntityType="Self.EH_Role" />
+  </EntityContainer>
+</Schema>
